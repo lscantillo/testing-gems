@@ -1,0 +1,16 @@
+<div class="ui cards">
+  <div class="card">
+    <div class="content">
+      <div class="header">Producto</div>
+      <div class="description">
+        <%= @product.name %>
+      </div>
+    </div>
+    <div class="ui bottom attached button">
+      <span>$<%= @product.price %></span>
+    </div>
+  </div> 
+</div>
+
+<%= link_to 'Edit', edit_product_path(@product), class:"ui primary button" %> |
+<%= link_to 'Back', products_path, class:"ui primary button" %>

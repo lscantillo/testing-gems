@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+<div class="ui pointing menu">
+  <a class="item">
+    Inicio
+  </a>
+  <a class="active item">
+    Productos
+  </a>
+  <a class="item">
+    Carrito
+  </a>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui segment">
+  <h1>Productos</h1>
+
+<table class="ui very basic collapsing celled table">
+  <thead>
+    <tr><th>Productos</th>
+    <th>Acciones</th>
+  </tr></thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td>
+          <h4 class="ui image header">
+            <img src="https://picsum.photos/200?random=1" class="ui mini rounded image">
+            <div class="content">
+              <%= product.name %>
+              <div class="sub header">
+                $<%= product.price %>
+              </div>
+            </div>
+        </h4></td>
+        <td><%= link_to 'Ver', product, class:'shop icon' %></td>
+        <td><%= link_to 'Editar', edit_product_path(product) %></td>
+        <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%== pagy_nav(@pagy)%>    
+<%== pagy_info(@pagy, 'Producto'.pluralize(@pagy.count)) %> 
+<br>
+
+<%= link_to 'Nuevo Producto', new_product_path, class:"ui primary button" %>
+
+</div>

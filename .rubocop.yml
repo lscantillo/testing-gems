@@ -1,0 +1,9 @@
+AllCops:
+  NewCops: enable
+
+Style/Documentation:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'app/**/*.rb'

@@ -1,0 +1,536 @@
+<div id="sidebar-default" class="main-sidebar fix-scroll">
+  <a class="main-logo" href="#">
+    <span>ESW</span>indows
+  </a>
+  <div class="current-user">
+      <a href="#" class="name">
+        <%= image_tag "logo-square.png", class: "avatar" %>
+        <div>
+          <%= current_user.email %>
+        </div>
+      </a>
+      <ul class="menu">
+        <li>
+          <a href="<%= logout_path %>">Sign out</a>
+        </li>
+		<li>
+			<a href="<%= edit_user_registration_path %>">Change Password</a>
+		</li>
+      </ul>
+  </div>
+  <div class="menu-section">
+    <ul>
+	  <% if current_user.assemblies_admin? %>
+      <li class="option">
+        <a href="<%= assembly_systems_path %>" class="active">
+          <span 
+            class="
+              option__text
+              option__text--assembly">
+            Assembly Systems
+          </span>
+        </a>
+      </li>
+	  <% end %>
+      <li class="option">
+        <a href="<%= quote_simulator_path %>" class="active">
+          <span 
+            class="
+              option__text
+              option__text--simulator">
+            Quote & Work Order Simulator
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div 
+    class="
+      menu-section
+      menu-section--configuration">
+    <ul>
+      <li class="option">
+        <a href="#" data-toggle="sidebar">
+          <span 
+            class="
+              option__text
+              option__text--configuration">
+            Configurations
+          </span>
+        </a>
+
+        <ul class="submenu fullmenu">
+		  <% if current_user.component_admin? %>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span
+                class="
+                  option__text
+                  option__text--accessories">
+                Accessories
+              </span>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option">
+                <a href="<%= assembly_parts_path %>" class="active">
+                  <span>All</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= accessory_colors_path %>" class="active">
+                  <span>Colors</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= accessory_color_aluminum_finishes_path %>" class="active">
+                  <span>Aluminum Finishes</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= cut_accessories_path %>" class="active">
+                  <span>Cut Accessories</span>
+                </a>
+              </li>             
+            </ul>
+          </li>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span
+                class="
+                  option__text
+                  option__text--aluminums">
+                Aluminums
+              </span>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option">
+                <a href="<%= aluminums_path %>" class="active">
+                  <span>All</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= aluminum_finishes_path %>" class="active">
+                  <span>Aluminum Finishes</span>
+                </a>
+              </li>
+              <% if current_user.can_reserve_aluminum? %>
+              <li class="option">
+                <a href="<%= aluminum_stock_parts_path %>" class="active">
+                  <span>Stock Parts</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= aluminum_cut_configurations_path %>" class="active">
+                  <span>Cut Configurations</span>
+                </a>
+              </li>
+              <% end %>
+              <li class="option">
+                <a href="<%= aluminum_report_index_path %>" class="active">
+                  <span>Aluminum Report</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span
+                class="
+                  option__text
+                  option__text--glasses">
+                Glasses
+              </span>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option">
+                <a href="<%= glasses_path %>">
+                  <span>All Makeups</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_thicknesses_path %>">
+                  <span>Glass Thicknesses & Weights</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_treatments_path %>">
+                  <span>Glass Treatments</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_colors_path %>">
+                  <span>Glass Colors</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_coatings_path %>">
+                  <span>Glass Coatings</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_interlayers_path %>">
+                  <span>Interlayers</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_interlayer_colors_path %>">
+                  <span>Interlayer Colors</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_spacer_gasses_path %>">
+                  <span>Spacer Types</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_spacer_gap_sizes_path %>">
+                  <span>Spacer Gap Sizes</span>
+                </a>
+              </li>
+               <li class="option">
+                <a href="<%= glass_spacer_colors_path %>">
+                  <span>Spacer Colors</span>
+                </a>
+              </li>             
+            </ul>
+          </li>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span
+                class="
+                  option__text
+                  option__text--prices">
+                Costs
+              </span>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option">
+                <a href="<%= default_aluminum_prices_path %>">
+                  <span>Aluminum Default</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= assembly_system_aluminum_prices_path %>">
+                  <span>Aluminum</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= glass_prices_path %>">
+                  <span>Glass Sheet</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= interlayer_prices_path %>">
+                  <span>Glass Interlayer</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= separator_prices_path %>">
+                  <span>Glass Spacer</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= part_prices_path %>">
+                  <span>Accessory</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= currencies_path %>">
+                  <span>Currencies</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= customer_cost_groups_path %>" class="active">
+                  <span>Cost Groups</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="option">
+            <a href="<%= muntins_path %>">
+              <span
+                class="
+                  option__text
+                  option__text--muntins">
+                Muntins
+              </span>
+            </a>
+          </li>
+          <li class="option">
+            <a href="<%= assembly_balances_path %>">
+              <span
+                class="
+                  option__text
+                  option__text--balances">
+                Balances
+              </span>
+            </a>
+          </li>
+
+		  <% end %>
+		  <% if current_user.user_admin? %>
+          <li class="option">
+            <a href="<%= users_path %>">
+              <span
+                class="
+                  option__text
+                  option__text--users">
+                Users
+              </span>
+            </a>
+          </li>
+		  <% end %>
+      <% if current_user.customer_admin? %>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span
+                class="
+                  option__text
+                  option__text--customers">
+                Customers
+              </span>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option">
+                <a href="<%= customers_path %>" class="active">
+                  <span>All</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= customer_types_path %>" class="active">
+                  <span>Markup Types</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= assembly_system_visibility_types_path %>" class="active">
+                  <span>System Visibility Types</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= assembly_system_glass_configuration_groups_path %>" class="active">
+                  <span>Glass Configuration Groups</span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= assembly_system_aluminum_finish_groups_path %>" class="active">
+                  <span>Aluminum Finish Groups</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+        <% if current_user.perliminary_notice_manager? %>
+          <li class="option">
+            <a href="<%= admin_preliminary_notices_path %>">
+              <span
+                class="
+                  option__text
+                  option__text--projects">
+                Preliminary Notices
+              </span>
+            </a>
+          </li>
+        <% end %>
+        <% if current_user.can_manage_schedules? %>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span
+                class="
+                  option__text
+                  option__text--purchase_orders">
+                Schedules
+                </span>
+                <% if unplanned_schedules? %>
+                  <span class='sidebar-notification schedule'><%= unplanned_schedules %></span>
+                <% end %>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option" %>
+                <a href="<%= schedules_all_path%>" class="active">
+                  <span>All</span>
+                </a>
+              </li>
+              <li class="option" %>
+                <a href="<%= schedules_unplanned_path%>" class="active">
+                  <span>Unplanned</span>
+                  <% if unplanned_schedules? %>
+                    <span class='sidebar-notification schedule'><%= unplanned_schedules %></span>
+                  <% end %>
+                </a>
+              </li>
+              <li class="option" %>
+                <a href="<%= schedules_in_planning_path%>" class="active">
+                  <span>In Planning</span>
+                </a>
+              </li>                
+              <li class="option" %>
+                <a href="<%= schedules_scheduled_path %>" class="active">
+                  <span>Scheduled</span>
+                </a>
+              </li>                
+            </ul>
+          </li>
+        <% end %>
+        <% if current_user.can_manage_glass_units? %>
+          <li class="option">
+            <a href="#" data-toggle="sidebar">
+              <span 
+                class="
+                  option__text
+                  option__text--purchase_orders">
+                Glass Units
+              </span>
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+              <li class="option">
+                <a href="<%= delivered_glass_units_path%>" classs="active">
+                  <span>Delivered </span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= received_glass_units_path%>" classs="active">
+                  <span>Received </span>
+                </a>
+              </li>
+              <li class="option">
+                <a href="<%= available_glass_units_path%>" classs="active">
+                  <span>Available </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+        <% if current_user.can_view_reports? %>
+          <li class="option">
+          <a href="#" data-toggle="sidebar">
+            <span
+              class="
+                option__text
+                option__text--reports">
+              Reports
+            </span>
+            <i class="fa fa-chevron-down"></i>
+          </a>
+          <ul class="submenu">
+            <li class="option">
+              <a href="<%= reports_path %>" class="active">
+                <span>Sales</span>
+              </a>
+            </li>
+          </ul>
+          </li>
+        <li class="option">
+          <a href="<%= purchase_orders_path %>">
+            <span
+              class="
+                option__text
+                option__text--purchase_orders">
+              Orders
+            </span>
+          </a>
+        </li>
+        <li class="option">
+          <a href="<%= service_purchase_orders_path %>">
+            <span
+              class="
+                option__text
+                option__text--purchase_orders">
+              Service Orders
+            </span>
+          </a>
+        </li>
+      <% end %>
+      <% if current_user.can_reserve_aluminum? || current_user.can_reserve_accessories? %>
+        <li class="option">
+          <a href="#" data-toggle="sidebar">
+            <span
+              class="
+                option__text
+                option__text--reservations">
+              Reservations
+            </span>
+            <i class="fa fa-chevron-down"></i>
+          </a>
+          <ul class="submenu">
+          <% if current_user.can_reserve_accessories? %>
+            <li class="option">
+              <a href="<%= accessory_reservations_path %>" class="active">
+                <span>Accessories</span>
+              </a>
+            </li>
+            <li class="option">
+              <a href="<%= accessories_missing_stock_path %>" class="active">
+                <span>Accessories Missing Stock</span>
+              </a>
+            </li>
+            <li class="option">
+              <a href="<%= cut_accessories_report_index_path %>" class="active">
+                <span>Cut Accessories</span>
+              </a>
+            </li> 
+            <li class="option">
+              <a href="<%= cut_tensors_report_index_path %>" class="active">
+                <span>Cut Tensors</span>
+              </a>
+            </li>
+          <% end %>
+          <% if current_user.can_order_glass? %>
+            <li class="option">
+              <a href="<%= glass_reservations_path %>" class="active">
+                <span>Glasses</span>
+              </a>
+            </li>
+          <% end %>
+          <% if current_user.can_reserve_aluminum? %>
+            <li class="option">
+              <a href="<%= aluminum_reservations_path %>" class="active">
+                <span>Aluminum</span>
+              </a>
+            </li>
+          <% end %>
+          <% if current_user.can_reserve_aluminum? %>
+            <li class="option">
+              <a href="<%= aluminum_optimizations_path %>" class="active">
+                <span>Aluminum Optimizations</span>
+              </a>
+            </li>
+          <% end %>
+          </ul>
+        </li>
+      <% end %>
+		  <% if current_user.authentication_token_admin? %>
+          <li class="option">
+            <a href="<%= authentication_tokens_path %>">
+              <span
+                class="
+                  option__text
+                  option__text--accessories">
+                API Tokens
+              </span>
+            </a>
+          </li>
+		  <% end %>
+		  <% if current_user.can_view_product_labels? %>
+        <li class="option">
+          <a href="<%= product_labels_path %>">
+            <span
+              class="
+                option__text
+                option__text--product_labels">
+              Product Labels
+            </span>
+          </a>
+        </li>
+      <% end %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
