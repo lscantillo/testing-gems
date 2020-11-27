@@ -1,3 +1,3 @@
 # README
 
-This is a application to test different staff
+This is an application to test different staff
